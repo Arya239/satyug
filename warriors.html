@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="History of brave Indian warriors who fought for Dharma and Motherland.">
+
+    <meta property="og:title" content="History of Warriors - SATYUG HINDU ARMY">
+    <meta property="og:description" content="Read about Maharana Pratap, Shivaji Maharaj, and other legends.">
+
+    <title>History of Warriors - SATYUG HINDU ARMY</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;700&family=Noto+Sans+Devanagari:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* --- Basic Styles --- */
+        :root {
+            --primary: #ff9933;
+            --primary-hover: #e67e00;
+            --bg: #ffffff;
+            --text: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --max-width: 1200px;
+        }
+        html { scroll-behavior: smooth; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Noto Sans', 'Noto Sans Devanagari', sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            background-color: var(--bg);
+            overflow-x: hidden;
+        }
+        a { text-decoration: none; color: inherit; }
+        ul { list-style: none; }
+        img { max-width: 100%; display: block; }
+        .container { max-width: var(--max-width); margin: 0 auto; padding: 0 1.5rem; }
+
+        /* --- Header --- */
+        header {
+            background-color: var(--bg);
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+        header.scrolled {
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom-color: transparent;
+        }
+        nav { display: flex; justify-content: space-between; align-items: center; height: 4.5rem; }
+        .logo { font-size: 1.5rem; font-weight: 700; color: var(--primary); letter-spacing: -0.025em; }
+        .lang-select { padding: 0.5rem; border-radius: 0.25rem; border: 1px solid var(--border); background: var(--bg); color: var(--text); font-family: inherit; cursor: pointer; }
+        .nav-links { display: flex; gap: 2rem; align-items: center; }
+        .nav-links a { font-weight: 500; color: var(--text-muted); transition: color 0.2s; }
+        .nav-links a:hover { color: var(--primary); }
+        .hamburger { display: none; background: none; border: none; color: var(--text); font-size: 1.5rem; cursor: pointer; }
+
+        /* --- Search Bar --- */
+        .search-box { display: flex; align-items: center; background: var(--bg); border-radius: 50px; padding: 5px; border: 1px solid transparent; transition: all 0.3s ease; }
+        .search-box.active { border-color: var(--primary); box-shadow: 0 0 10px rgba(0,0,0,0.05); }
+        .search-txt { border: none; background: none; outline: none; padding: 0; color: var(--text); font-size: 1rem; transition: width 0.4s ease, opacity 0.4s ease; width: 0; opacity: 0; }
+        .search-box.active .search-txt { width: 150px; opacity: 1; padding: 0 10px; }
+        .search-btn { color: var(--primary); width: 30px; height: 30px; border-radius: 50%; background: transparent; display: flex; justify-content: center; align-items: center; transition: 0.4s; border: none; cursor: pointer; font-size: 1.2rem; }
+
+        /* --- Click GIF Effect --- */
+        .click-anim { position: absolute; width: 120px; user-select: none; pointer-events: none; z-index: 9999; filter: drop-shadow(0 4px 6px rgba(0,0,0,0.3)); animation: dancePop 1.5s ease-out forwards; }
+        @keyframes dancePop { 0% { opacity: 0; transform: translate(-50%, -50%) scale(0.5); } 20% { opacity: 1; transform: translate(-50%, -50%) scale(1.1) rotate(-10deg); } 50% { transform: translate(-50%, -50%) scale(1.1) rotate(10deg); } 100% { opacity: 0; transform: translate(-50%, -150%) scale(0.5); } }
+
+        /* --- Footer --- */
+        footer { background-color: #1e293b; color: white; padding: 3rem 0; text-align: center; margin-top: 4rem; }
+        footer p { opacity: 0.8; font-size: 0.9rem; }
+
+        /* --- Article Page Styles --- */
+        .article-section { padding: 4rem 0; }
+        .article-content { max-width: 800px; margin: 0 auto; }
+        .article-content h1 { font-size: 2.8rem; margin-bottom: 1.5rem; color: var(--primary); line-height: 1.2; }
+        .article-content h2 { font-size: 1.8rem; margin-top: 2.5rem; margin-bottom: 1rem; border-bottom: 2px solid var(--border); padding-bottom: 0.5rem; }
+        .article-content h3 { font-size: 1.4rem; margin-top: 2rem; margin-bottom: 0.5rem; color: var(--text); }
+        .article-content p { font-size: 1.1rem; line-height: 1.8; margin-bottom: 1.5rem; color: var(--text-muted); }
+        .article-content img { max-width: 500px; width: 100%; height: auto; border-radius: 1rem; margin: 2rem auto; display: block; box-shadow: var(--shadow); }
+        .back-link { display: inline-block; margin-bottom: 2rem; color: var(--primary); font-weight: 600; }
+        .back-link:hover { text-decoration: underline; }
+
+        @media (max-width: 768px) {
+            .nav-links { position: absolute; top: 4.5rem; left: 0; width: 100%; background-color: var(--bg); border-bottom: 1px solid var(--border); flex-direction: column; padding: 2rem; transform: translateY(-150%); transition: transform 0.3s ease-in-out; z-index: 999; }
+            .nav-links.open { transform: translateY(0); }
+            .hamburger { display: block; }
+            .article-section { padding: 2rem 0; }
+            .article-content h1 { font-size: 2rem; }
+            .article-content h2 { font-size: 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <nav aria-label="Main navigation">
+                <a href="index.html" class="logo">SATYUG HINDU ARMY</a>
+                <button class="hamburger" id="menuToggle" aria-label="Toggle navigation" aria-expanded="false">
+                    &#9776;
+                </button>
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="index.html#home" data-i18n="home">Home</a></li>
+                    <li><a href="index.html#blogs" data-i18n="blogs">Blogs</a></li>
+                    <li><a href="gallery.html" data-i18n="gallery">Gallery</a></li>
+                    <li><a href="index.html#about" data-i18n="about">About</a></li>
+                    <li><a href="index.html#contact" data-i18n="contact">Contact</a></li>
+                    <li>
+                        <select class="lang-select" id="languageSelector">
+                            <option value="en">English</option>
+                            <option value="hi">हिंदी</option>
+                        </select>
+                    </li>
+                    <li>
+                        <div class="search-box">
+                            <input type="text" class="search-txt" placeholder="Search...">
+                            <button class="search-btn" aria-label="Search">&#128269;</button>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="article-section">
+            <div class="container">
+                <div class="article-content">
+                    <a href="index.html#blogs" class="back-link" data-i18n="back_link">&larr; Back to All Blogs</a>
+                    <h1 data-i18n="article_title">History of Warriors: Defenders of Dharma</h1>
+                    <p data-i18n="intro_p">
+                        India's history is not just a tale of invasions, but a saga of resistance, valor, and sacrifice. For centuries, brave warriors have stood like a wall to protect their motherland, culture, and Dharma. Their stories continue to inspire generations.
+                    </p>
+                    <img src="https://img.freepik.com/free-photo/fantasy-rama-navami-celebration_23-2151400305.jpg" alt="Warrior Celebration">
+                    
+                    <h2 data-i18n="legends_h2">Legends of Valor</h2>
+
+                    <h3 data-i18n="s1_title">1. Maharana Pratap</h3>
+                    <p data-i18n="s1_desc">
+                        The legendary ruler of Mewar, Maharana Pratap, is a symbol of patriotism and self-respect. He refused to submit to the Mughal Emperor Akbar, choosing a life of struggle in the forests over servitude. His bravery in the Battle of Haldighati (1576), along with his loyal horse Chetak, is immortalized in history.
+                    </p>
+
+                    <h3 data-i18n="s2_title">2. Chhatrapati Shivaji Maharaj</h3>
+                    <p data-i18n="s2_desc">
+                        The founder of the Maratha Empire, Shivaji Maharaj, was a master of guerrilla warfare. He challenged the mighty Mughal empire and the Sultanates of Deccan. Beyond being a warrior, he was a visionary king who established a progressive civil rule, built a strong navy, and revived ancient Hindu political traditions.
+                    </p>
+
+                    <h3 data-i18n="s3_title">3. Prithviraj Chauhan</h3>
+                    <p data-i18n="s3_desc">
+                        The king of Ajmer and Delhi, Prithviraj Chauhan, is remembered for his courage and chivalry. He famously defeated the Ghurid invader Muhammad Ghori in the First Battle of Tarain. His life is celebrated in the epic poem 'Prithviraj Raso', highlighting his skill in archery and his unwavering spirit.
+                    </p>
+
+                    <h3 data-i18n="s4_title">4. Rani Lakshmibai</h3>
+                    <p data-i18n="s4_desc">
+                        The Queen of Jhansi, Rani Lakshmibai, became the icon of the Indian Rebellion of 1857. When the British tried to annex her kingdom, she famously declared, "I shall not surrender my Jhansi." She fought fiercely on the battlefield, becoming a symbol of resistance against colonial rule.
+                    </p>
+
+                    <h3 data-i18n="s5_title">5. Suryaputra Karna</h3>
+                    <img src="https://images.unsplash.com/photo-1608649132533-356885368490?q=80&w=2070&auto=format&fit=crop" alt="Representation of Ancient Warrior" style="margin-top: 1rem; margin-bottom: 1rem; border-radius: 0.5rem;">
+                    <p data-i18n="s5_desc">
+                        Known as Danveer Karna, he was a central character in the Mahabharata. A warrior of immense skill and the son of the Sun God, he is remembered for his unmatched generosity, loyalty to his friend Duryodhana, and his tragic destiny.
+                    </p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 SATYUG HINDU ARMY. All rights reserved. | <a href="gallery.html" style="color: white; text-decoration: underline;">Members Gallery</a> | Dharma Rakshati Rakshitah</p>
+        </div>
+    </footer>
+
+    <script>
+        // Translations
+        const translations = {
+            en: {
+                home: "Home",
+                blogs: "Blogs",
+                gallery: "Gallery",
+                about: "About",
+                contact: "Contact",
+                back_link: "&larr; Back to All Blogs",
+                article_title: "History of Warriors: Defenders of Dharma",
+                intro_p: "India's history is not just a tale of invasions, but a saga of resistance, valor, and sacrifice. For centuries, brave warriors have stood like a wall to protect their motherland, culture, and Dharma. Their stories continue to inspire generations.",
+                legends_h2: "Legends of Valor",
+                s1_title: "1. Maharana Pratap",
+                s1_desc: "The legendary ruler of Mewar, Maharana Pratap, is a symbol of patriotism and self-respect. He refused to submit to the Mughal Emperor Akbar, choosing a life of struggle in the forests over servitude. His bravery in the Battle of Haldighati (1576), along with his loyal horse Chetak, is immortalized in history.",
+                s2_title: "2. Chhatrapati Shivaji Maharaj",
+                s2_desc: "The founder of the Maratha Empire, Shivaji Maharaj, was a master of guerrilla warfare. He challenged the mighty Mughal empire and the Sultanates of Deccan. Beyond being a warrior, he was a visionary king who established a progressive civil rule, built a strong navy, and revived ancient Hindu political traditions.",
+                s3_title: "3. Prithviraj Chauhan",
+                s3_desc: "The king of Ajmer and Delhi, Prithviraj Chauhan, is remembered for his courage and chivalry. He famously defeated the Ghurid invader Muhammad Ghori in the First Battle of Tarain. His life is celebrated in the epic poem 'Prithviraj Raso', highlighting his skill in archery and his unwavering spirit.",
+                s4_title: "4. Rani Lakshmibai",
+                s4_desc: "The Queen of Jhansi, Rani Lakshmibai, became the icon of the Indian Rebellion of 1857. When the British tried to annex her kingdom, she famously declared, \"I shall not surrender my Jhansi.\" She fought fiercely on the battlefield, becoming a symbol of resistance against colonial rule.",
+                s5_title: "5. Suryaputra Karna",
+                s5_desc: "Known as Danveer Karna, he was a central character in the Mahabharata. A warrior of immense skill and the son of the Sun God, he is remembered for his unmatched generosity, loyalty to his friend Duryodhana, and his tragic destiny."
+            },
+            hi: {
+                home: "मुख्य पृष्ठ",
+                blogs: "ब्लॉग",
+                gallery: "गैलरी",
+                about: "परिचय",
+                contact: "संपर्क",
+                back_link: "&larr; सभी ब्लॉग पर वापस जाएं",
+                article_title: "योद्धाओं का इतिहास: धर्म के रक्षक",
+                intro_p: "भारत का इतिहास केवल आक्रमणों की कहानी नहीं है, बल्कि प्रतिरोध, वीरता और बलिदान की गाथा है। सदियों से, बहादुर योद्धा अपनी मातृभूमि, संस्कृति और धर्म की रक्षा के लिए दीवार की तरह खड़े रहे हैं। उनकी कहानियाँ पीढ़ियों को प्रेरित करती रहती हैं।",
+                legends_h2: "वीरता की किंवदंतियाँ",
+                s1_title: "१. महाराणा प्रताप",
+                s1_desc: "मेवाड़ के महान शासक, महाराणा प्रताप, देशभक्ति और स्वाभिमान के प्रतीक हैं। उन्होंने मुगल सम्राट अकबर के सामने झुकने से इनकार कर दिया, और दासता के बजाय जंगलों में संघर्ष का जीवन चुना। हल्दीघाटी के युद्ध (१५७६) में उनकी वीरता, उनके वफादार घोड़े चेतक के साथ, इतिहास में अमर है।",
+                s2_title: "२. छत्रपति शिवाजी महाराज",
+                s2_desc: "मराठा साम्राज्य के संस्थापक, शिवाजी महाराज, छापामार युद्ध (गुरिल्ला वारफेयर) के उस्ताद थे। उन्होंने शक्तिशाली मुगल साम्राज्य और दक्कन की सल्तनतों को चुनौती दी। एक योद्धा होने के अलावा, वह एक दूरदर्शी राजा थे जिन्होंने एक प्रगतिशील नागरिक शासन स्थापित किया, एक मजबूत नौसेना का निर्माण किया और प्राचीन हिंदू राजनीतिक परंपराओं को पुनर्जीवित किया।",
+                s3_title: "३. पृथ्वीराज चौहान",
+                s3_desc: "अजमेर और दिल्ली के राजा, पृथ्वीराज चौहान, अपने साहस और शिष्टता के लिए याद किए जाते हैं। उन्होंने तराइन के प्रथम युद्ध में घुरिद आक्रमणकारी मुहम्मद गोरी को हराया था। उनका जीवन महाकाव्य 'पृथ्वीराज रासो' में मनाया जाता है, जो तीरंदाजी में उनके कौशल और उनकी अटूट भावना को उजागर करता है।",
+                s4_title: "४. रानी लक्ष्मीबाई",
+                s4_desc: "झाँसी की रानी, रानी लक्ष्मीबाई, १८५७ के भारतीय विद्रोह की प्रतीक बन गईं। जब अंग्रेजों ने उनके राज्य को हड़पने की कोशिश की, तो उन्होंने प्रसिद्ध घोषणा की, \"मैं अपनी झाँसी नहीं दूँगी।\" उन्होंने युद्ध के मैदान में जमकर लड़ाई लड़ी और औपनिवेशिक शासन के खिलाफ प्रतिरोध का प्रतीक बन गईं।",
+                s5_title: "५. सूर्यपुत्र कर्ण",
+                s5_desc: "दानवीर कर्ण के रूप में जाने जाने वाले, वह महाभारत के एक केंद्रीय पात्र थे। अपार कौशल के योद्धा और सूर्य देव के पुत्र, उन्हें उनकी बेजोड़ उदारता, अपने मित्र दुर्योधन के प्रति वफादारी और उनके दुखद भाग्य के लिए याद किया जाता है।"
+            }
+        };
+
+        // Language Switcher & Common Logic
+        const langSelector = document.getElementById('languageSelector');
+        langSelector.addEventListener('change', (e) => {
+            const lang = e.target.value;
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (translations[lang][key]) el.innerHTML = translations[lang][key];
+            });
+        });
+
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.getElementById('navLinks');
+        menuToggle.addEventListener('click', () => {
+            const isOpen = navLinks.classList.toggle('open');
+            menuToggle.setAttribute('aria-expanded', isOpen);
+        });
+
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) header.classList.add('scrolled');
+            else header.classList.remove('scrolled');
+        });
+
+        // Click Effect
+        const clickGifs = [
+            'https://c.tenor.com/pSu_xuyUMEMAAAAC/excited.gif'
+        ];
+        document.addEventListener('click', (e) => {
+            const img = document.createElement('img');
+            img.src = clickGifs[Math.floor(Math.random() * clickGifs.length)];
+            img.classList.add('click-anim');
+            img.style.left = e.pageX + 'px';
+            img.style.top = e.pageY + 'px';
+            document.body.appendChild(img);
+            setTimeout(() => img.remove(), 1500);
+        });
+    </script>
+</body>
+</html>

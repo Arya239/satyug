@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Members Gallery - SATYUG HINDU ARMY</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Noto Sans', sans-serif; padding: 2rem; background: #f8fafc; color: #1e293b; }
+        .container { max-width: 1200px; margin: 0 auto; }
+        h1 { color: #ff9933; text-align: center; margin-bottom: 2rem; }
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1.5rem;
+        }
+        .member-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 1rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        .member-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+        }
+        .member-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: #ff9933;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 2.5rem;
+            margin: 0 auto 1rem auto;
+        }
+        .member-name {
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+        .back-link {
+            display: block;
+            text-align: center;
+            margin-top: 3rem;
+            color: #64748b;
+            text-decoration: none;
+        }
+
+        .search-container {
+            max-width: 400px;
+            margin: 0 auto 2rem auto;
+        }
+        #memberSearch {
+            width: 100%;
+            padding: 0.8rem 1.5rem;
+            border: 2px solid #e2e8f0;
+            border-radius: 50px;
+            font-size: 1rem;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+        #memberSearch:focus {
+            border-color: #ff9933;
+        }
+
+        /* Mobile Optimizations */
+        @media (max-width: 600px) {
+            body { padding: 1rem; }
+            .gallery-grid { 
+                grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); 
+                gap: 1rem;
+            }
+            .member-card { padding: 1rem; }
+            .member-avatar { width: 60px; height: 60px; font-size: 1.5rem; }
+            h1 { font-size: 1.75rem; margin-bottom: 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container" id="galleryContainer" style="display:none;">
+        <h1>Members Gallery</h1>
+        <div class="search-container">
+            <input type="text" id="memberSearch" placeholder="Search members..." onkeyup="filterMembers()">
+        </div>
+        <div id="galleryGrid" class="gallery-grid">
+            <!-- Members will be loaded here by JavaScript -->
+        </div>
+        <a href="index.html" class="back-link">&larr; Back to Home</a>
+    </div>
+
+    <script>
+        // Check if user is logged in
+        if (!localStorage.getItem('currentUser')) {
+            window.location.href = 'enter.html';
+        } else {
+            const password = prompt("Enter Gallery Password:");
+            if (password === "raam") {
+                document.getElementById('galleryContainer').style.display = 'block';
+                
+                // Log gallery access
+                const currentUser = localStorage.getItem('currentUser');
+                const logs = JSON.parse(localStorage.getItem('satyug_gallery_logs')) || [];
+                const time = new Date().toLocaleString();
+                logs.unshift({ name: currentUser, time: time });
+                if (logs.length > 50) logs.pop(); // Keep last 50 logs
+                localStorage.setItem('satyug_gallery_logs', JSON.stringify(logs));
+                
+                loadMembers();
+            } else {
+                alert("Access Denied");
+                window.location.href = "index.html";
+            }
+        }
+
+        function loadMembers() {
+            const STORAGE_KEY = 'satyug_recruits';
+            const recruits = JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
+            const approvedMembers = recruits.filter(r => r.status === 'Approved');
+            const grid = document.getElementById('galleryGrid');
+            grid.innerHTML = '';
+
+            if (approvedMembers.length === 0) {
+                grid.innerHTML = '<p style="text-align:center; color:#64748b; grid-column: 1 / -1;">No approved members yet.</p>';
+                return;
+            }
+
+            approvedMembers.forEach(member => {
+                const card = document.createElement('div');
+                card.className = 'member-card';
+                const initial = member.name.charAt(0).toUpperCase();
+                card.innerHTML = `
+                    <div class="member-avatar">${initial}</div>
+                    <div class="member-name">${member.name}</div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        function filterMembers() {
+            const input = document.getElementById('memberSearch');
+            const filter = input.value.toLowerCase();
+            const cards = document.getElementsByClassName('member-card');
+
+            for (let i = 0; i < cards.length; i++) {
+                const nameElement = cards[i].getElementsByClassName('member-name')[0];
+                if (nameElement) {
+                    const txtValue = nameElement.textContent || nameElement.innerText;
+                    if (txtValue.toLowerCase().indexOf(filter) > -1) {
+                        cards[i].style.display = "";
+                    } else {
+                        cards[i].style.display = "none";
+                    }
+                }
+            }
+        }
+
+    </script>
+</body>
+</html>

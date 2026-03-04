@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="An in-depth look at the four Vedas, the ancient scriptures of Hinduism.">
+
+    <meta property="og:title" content="The Power of Vedas - SATYUG HINDU ARMY">
+    <meta property="og:description" content="Learn about the Rigveda, Yajurveda, Samaveda, and Atharvaveda.">
+
+    <title>The Power of Vedas - SATYUG HINDU ARMY</title>
+
+    <!-- Google Fonts: Noto Sans (Supports Latin & Devanagari) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;700&family=Noto+Sans+Devanagari:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* --- Basic Styles (Copied from index.html) --- */
+        :root {
+            --primary: #ff9933;
+            --primary-hover: #e67e00;
+            --bg: #ffffff;
+            --text: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --max-width: 1200px;
+        }
+        html { scroll-behavior: smooth; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Noto Sans', 'Noto Sans Devanagari', sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            background-color: var(--bg);
+            overflow-x: hidden;
+        }
+        a { text-decoration: none; color: inherit; }
+        ul { list-style: none; }
+        img { max-width: 100%; display: block; }
+        .container { max-width: var(--max-width); margin: 0 auto; padding: 0 1.5rem; }
+
+        /* --- Header (Copied from index.html) --- */
+        header {
+            background-color: var(--bg);
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+        header.scrolled {
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom-color: transparent;
+        }
+        nav { display: flex; justify-content: space-between; align-items: center; height: 4.5rem; }
+        .logo { font-size: 1.5rem; font-weight: 700; color: var(--primary); letter-spacing: -0.025em; }
+        .lang-select { padding: 0.5rem; border-radius: 0.25rem; border: 1px solid var(--border); background: var(--bg); color: var(--text); font-family: inherit; cursor: pointer; }
+        .nav-links { display: flex; gap: 2rem; align-items: center; }
+        .nav-links a { font-weight: 500; color: var(--text-muted); transition: color 0.2s; }
+        .nav-links a:hover { color: var(--primary); }
+        .hamburger { display: none; background: none; border: none; color: var(--text); font-size: 1.5rem; cursor: pointer; }
+
+        /* --- Search Bar (Copied from index.html) --- */
+        .search-box {
+            display: flex;
+            align-items: center;
+            background: var(--bg);
+            border-radius: 50px;
+            padding: 5px;
+            border: 1px solid transparent;
+            transition: all 0.3s ease;
+        }
+        .search-box.active {
+            border-color: var(--primary);
+            box-shadow: 0 0 10px rgba(0,0,0,0.05);
+        }
+        .search-txt {
+            border: none;
+            background: none;
+            outline: none;
+            padding: 0;
+            color: var(--text);
+            font-size: 1rem;
+            transition: width 0.4s ease, opacity 0.4s ease;
+            width: 0;
+            opacity: 0;
+        }
+        .search-box.active .search-txt {
+            width: 150px;
+            opacity: 1;
+            padding: 0 10px;
+        }
+        .search-btn { color: var(--primary); width: 30px; height: 30px; border-radius: 50%; background: transparent; display: flex; justify-content: center; align-items: center; transition: 0.4s; border: none; cursor: pointer; font-size: 1.2rem; }
+
+        /* --- Click GIF Effect --- */
+        .click-anim {
+            position: absolute;
+            width: 120px;
+            user-select: none;
+            pointer-events: none;
+            z-index: 9999;
+            filter: drop-shadow(0 4px 6px rgba(0,0,0,0.3));
+            animation: dancePop 1.5s ease-out forwards;
+        }
+
+        @keyframes dancePop {
+            0% { opacity: 0; transform: translate(-50%, -50%) scale(0.5); }
+            20% { opacity: 1; transform: translate(-50%, -50%) scale(1.1) rotate(-10deg); }
+            50% { transform: translate(-50%, -50%) scale(1.1) rotate(10deg); }
+            100% { opacity: 0; transform: translate(-50%, -150%) scale(0.5); }
+        }
+
+        /* --- Footer (Copied from index.html) --- */
+        footer { background-color: #1e293b; color: white; padding: 3rem 0; text-align: center; margin-top: 4rem; }
+        footer p { opacity: 0.8; font-size: 0.9rem; }
+
+        /* --- Article Page Styles --- */
+        .article-section {
+            padding: 4rem 0;
+        }
+        .article-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .article-content h1 {
+            font-size: 2.8rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+            line-height: 1.2;
+        }
+        .article-content h2 {
+            font-size: 1.8rem;
+            margin-top: 2.5rem;
+            margin-bottom: 1rem;
+            border-bottom: 2px solid var(--border);
+            padding-bottom: 0.5rem;
+        }
+        .article-content p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            color: var(--text-muted);
+        }
+        .article-content img {
+            max-width: 500px;
+            width: 100%;
+            height: auto;
+            border-radius: 1rem;
+            margin: 2rem auto;
+            display: block;
+            box-shadow: var(--shadow);
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 2rem;
+            color: var(--primary);
+            font-weight: 600;
+        }
+        .back-link:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links { position: absolute; top: 4.5rem; left: 0; width: 100%; background-color: var(--bg); border-bottom: 1px solid var(--border); flex-direction: column; padding: 2rem; transform: translateY(-150%); transition: transform 0.3s ease-in-out; z-index: 999; }
+            .nav-links.open { transform: translateY(0); }
+            .hamburger { display: block; }
+            .article-section { padding: 2rem 0; }
+            .article-content h1 { font-size: 2rem; }
+            .article-content h2 { font-size: 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <nav aria-label="Main navigation">
+                <a href="index.html" class="logo">SATYUG HINDU ARMY</a>
+                <button class="hamburger" id="menuToggle" aria-label="Toggle navigation" aria-expanded="false">
+                    &#9776;
+                </button>
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="index.html#home" data-i18n="home">Home</a></li>
+                    <li><a href="index.html#blogs" data-i18n="blogs">Blogs</a></li>
+                    <li><a href="gallery.html" data-i18n="gallery">Gallery</a></li>
+                    <li><a href="index.html#about" data-i18n="about">About</a></li>
+                    <li><a href="index.html#contact" data-i18n="contact">Contact</a></li>
+                    <li>
+                        <select class="lang-select" id="languageSelector">
+                            <option value="en">English</option>
+                            <option value="hi">हिंदी</option>
+                        </select>
+                    </li>
+                    <li>
+                        <div class="search-box">
+                            <input type="text" class="search-txt" placeholder="Search...">
+                            <button class="search-btn" aria-label="Search">&#128269;</button>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="article-section">
+            <div class="container">
+                <div class="article-content">
+                    <a href="index.html#blogs" class="back-link" data-i18n="back_link">&larr; Back to All Blogs</a>
+                    <h1 data-i18n="article_title">The Power and Wisdom of the Vedas</h1>
+                    <p data-i18n="intro_p">
+                        The Vedas are a vast collection of religious texts that originated in ancient India. Composed in Vedic Sanskrit, these texts form the oldest layer of Sanskrit literature and are the foundational scriptures of Hinduism. They are considered "śruti" (what is heard), divine knowledge revealed to ancient sages (rishis).
+                    </p>
+                    <img src="https://www.sagasofindia.in/wp-content/uploads/2024/06/bhishma-pitamah_.webp" alt="Bhishma Pitamah">
+                    
+                    <h2 data-i18n="classification_h2">The Four Vedas: A Classification</h2>
+                    <p data-i18n="classification_p">
+                        The Vedas are traditionally classified into four main collections, each with a distinct purpose and character. Each Veda is further divided into four text types: the Samhitas (hymns), the Aranyakas (ritual texts), the Brahmanas (commentaries), and the Upanishads (philosophical texts).
+                    </p>
+
+                    <h3 data-i18n="rigveda_h3">1. Rigveda: The Book of Hymns</h3>
+                    <p data-i18n="rigveda_p">
+                        The Rigveda is the oldest and most important Veda, a collection of 1,028 hymns dedicated to various deities like Indra (King of Gods), Agni (the Fire God), and Soma (a sacred plant). It is the bedrock of Vedic thought, providing deep insights into the cosmology, rituals, and philosophy of the era.
+                    </p>
+
+                    <h3 data-i18n="yajurveda_h3">2. Yajurveda: The Book of Rituals</h3>
+                    <p data-i18n="yajurveda_p">
+                        The Yajurveda serves as a practical guidebook for priests conducting sacrificial rites (yajnas). It consists of prose mantras and formulas that were recited during rituals, ensuring that ceremonies were performed with precision and devotion. It is a bridge between the hymns of the Rigveda and the complex ceremonial practices.
+                    </p>
+
+                    <h3 data-i18n="samaveda_h3">3. Samaveda: The Book of Chants</h3>
+                    <p data-i18n="samaveda_p">
+                        The Samaveda is the Veda of melodies and chants. Its verses are primarily drawn from the Rigveda but are arranged as a collection of tunes (sāman) for liturgical purposes. These hymns were sung by Udgatar priests during Soma sacrifices and are considered the root of Indian classical music and dance.
+                    </p>
+
+                    <h3 data-i18n="atharvaveda_h3">4. Atharvaveda: The Book of Spells and Incantations</h3>
+                    <p data-i18n="atharvaveda_p">
+                        The Atharvaveda is unique in its content, containing a mix of hymns, spells, and incantations for healing, protection, and worldly well-being. It offers a fascinating window into the popular beliefs, daily life, and folk traditions of the Vedic people, covering everything from medicine to statecraft.
+                    </p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 SATYUG HINDU ARMY. All rights reserved. | <a href="gallery.html" style="color: white; text-decoration: underline;">Members Gallery</a> | Dharma Rakshati Rakshitah</p>
+        </div>
+    </footer>
+
+    <script>
+        // Translations
+        const translations = {
+            en: {
+                home: "Home",
+                blogs: "Blogs",
+                gallery: "Gallery",
+                about: "About",
+                contact: "Contact",
+                back_link: "&larr; Back to All Blogs",
+                article_title: "The Power and Wisdom of the Vedas",
+                intro_p: "The Vedas are a vast collection of religious texts that originated in ancient India. Composed in Vedic Sanskrit, these texts form the oldest layer of Sanskrit literature and are the foundational scriptures of Hinduism. They are considered \"śruti\" (what is heard), divine knowledge revealed to ancient sages (rishis).",
+                classification_h2: "The Four Vedas: A Classification",
+                classification_p: "The Vedas are traditionally classified into four main collections, each with a distinct purpose and character. Each Veda is further divided into four text types: the Samhitas (hymns), the Aranyakas (ritual texts), the Brahmanas (commentaries), and the Upanishads (philosophical texts).",
+                rigveda_h3: "1. Rigveda: The Book of Hymns",
+                rigveda_p: "The Rigveda is the oldest and most important Veda, a collection of 1,028 hymns dedicated to various deities like Indra (King of Gods), Agni (the Fire God), and Soma (a sacred plant). It is the bedrock of Vedic thought, providing deep insights into the cosmology, rituals, and philosophy of the era.",
+                yajurveda_h3: "2. Yajurveda: The Book of Rituals",
+                yajurveda_p: "The Yajurveda serves as a practical guidebook for priests conducting sacrificial rites (yajnas). It consists of prose mantras and formulas that were recited during rituals, ensuring that ceremonies were performed with precision and devotion. It is a bridge between the hymns of the Rigveda and the complex ceremonial practices.",
+                samaveda_h3: "3. Samaveda: The Book of Chants",
+                samaveda_p: "The Samaveda is the Veda of melodies and chants. Its verses are primarily drawn from the Rigveda but are arranged as a collection of tunes (sāman) for liturgical purposes. These hymns were sung by Udgatar priests during Soma sacrifices and are considered the root of Indian classical music and dance.",
+                atharvaveda_h3: "4. Atharvaveda: The Book of Spells and Incantations",
+                atharvaveda_p: "The Atharvaveda is unique in its content, containing a mix of hymns, spells, and incantations for healing, protection, and worldly well-being. It offers a fascinating window into the popular beliefs, daily life, and folk traditions of the Vedic people, covering everything from medicine to statecraft."
+            },
+            hi: {
+                home: "मुख्य पृष्ठ",
+                blogs: "ब्लॉग",
+                gallery: "गैलरी",
+                about: "परिचय",
+                contact: "संपर्क",
+                back_link: "&larr; सभी ब्लॉग पर वापस जाएं",
+                article_title: "वेदों की शक्ति और ज्ञान",
+                intro_p: "वेद धार्मिक ग्रंथों का एक विशाल संग्रह है जो प्राचीन भारत में उत्पन्न हुए थे। वैदिक संस्कृत में रचित, ये ग्रंथ संस्कृत साहित्य की सबसे पुरानी परत बनाते हैं और हिंदू धर्म के मूलभूत ग्रंथ हैं। उन्हें \"श्रुति\" (जो सुना जाता है) माना जाता है, जो प्राचीन ऋषियों को प्रकट किया गया दिव्य ज्ञान है।",
+                classification_h2: "चार वेद: एक वर्गीकरण",
+                classification_p: "वेदों को पारंपरिक रूप से चार मुख्य संग्रहों में वर्गीकृत किया गया है, जिनमें से प्रत्येक का एक अलग उद्देश्य और चरित्र है। प्रत्येक वेद को आगे चार प्रकार के ग्रंथों में विभाजित किया गया है: संहिता (भजन), आरण्यक (अनुष्ठान ग्रंथ), ब्राह्मण (भाष्य), और उपनिषद (दार्शनिक ग्रंथ)।",
+                rigveda_h3: "१. ऋग्वेद: भजनों की पुस्तक",
+                rigveda_p: "ऋग्वेद सबसे पुराना और सबसे महत्वपूर्ण वेद है, जो इंद्र (देवताओं के राजा), अग्नि (अग्नि देव), और सोम (एक पवित्र पौधा) जैसे विभिन्न देवताओं को समर्पित 1,028 भजनों का संग्रह है। यह वैदिक विचार का आधार है, जो युग के ब्रह्मांड विज्ञान, अनुष्ठानों और दर्शन में गहरी अंतर्दृष्टि प्रदान करता है।",
+                yajurveda_h3: "२. यजुर्वेद: अनुष्ठानों की पुस्तक",
+                yajurveda_p: "यजुर्वेद यज्ञ करने वाले पुजारियों के लिए एक व्यावहारिक मार्गदर्शिका के रूप में कार्य करता है। इसमें गद्य मंत्र और सूत्र होते हैं जो अनुष्ठानों के दौरान पढ़े जाते थे, यह सुनिश्चित करते हुए कि समारोह सटीकता और भक्ति के साथ किए गए थे। यह ऋग्वेद के भजनों और जटिल औपचारिक प्रथाओं के बीच एक सेतु है।",
+                samaveda_h3: "३. सामवेद: मंत्रों की पुस्तक",
+                samaveda_p: "सामवेद धुनों और मंत्रों का वेद है। इसके छंद मुख्य रूप से ऋग्वेद से लिए गए हैं, लेकिन liturgical प्रयोजनों के लिए धुनों (सामन) के संग्रह के रूप में व्यवस्थित हैं। इन भजनों को सोम यज्ञों के दौरान उद्गाता पुजारियों द्वारा गाया जाता था और इसे भारतीय शास्त्रीय संगीत और नृत्य की जड़ माना जाता है।",
+                atharvaveda_h3: "४. अथर्ववेद: मंत्रों और जादू-टोनों की पुस्तक",
+                atharvaveda_p: "अथर्ववेद अपनी सामग्री में अद्वितीय है, जिसमें उपचार, संरक्षण और सांसारिक कल्याण के लिए भजन, मंत्र और जादू-टोने का मिश्रण है। यह वैदिक लोगों की लोकप्रिय मान्यताओं, दैनिक जीवन और लोक परंपराओं में एक आकर्षक खिड़की प्रदान करता है, जिसमें चिकित्सा से लेकर राज-काज तक सब कुछ शामिल है।"
+            }
+        };
+
+        // Language Switcher Logic
+        const langSelector = document.getElementById('languageSelector');
+        
+        langSelector.addEventListener('change', (e) => {
+            const lang = e.target.value;
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (translations[lang][key]) {
+                    el.innerHTML = translations[lang][key];
+                }
+            });
+        });
+
+        // Mobile Menu Logic
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.getElementById('navLinks');
+
+        menuToggle.addEventListener('click', () => {
+            const isOpen = navLinks.classList.toggle('open');
+            menuToggle.setAttribute('aria-expanded', isOpen);
+        });
+
+        // Close menu when clicking a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                if (navLinks.classList.contains('open')) {
+                    navLinks.classList.remove('open');
+                    menuToggle.setAttribute('aria-expanded', 'false');
+                }
+            });
+        });
+
+        // Header Scroll Effect
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Search Toggle Logic
+        const searchBtn = document.querySelector('.search-btn');
+        const searchBox = document.querySelector('.search-box');
+        const searchInput = document.querySelector('.search-txt');
+
+        searchBtn.addEventListener('click', () => {
+            if (searchBox.classList.contains('active') && searchInput.value.trim() !== "") {
+                alert('Searching for: ' + searchInput.value);
+            } else {
+                searchBox.classList.toggle('active');
+                if (searchBox.classList.contains('active')) searchInput.focus();
+            }
+        });
+
+        // Random GIF Click Effect
+        const clickGifs = [
+            'https://media1.tenor.com/m/91X3d1m5nOUAAAAC/sigma-rule-sigma.gif', // Sigma
+            'https://media1.tenor.com/m/tIP-GgS5sQ0AAAAC/little-krishna-krishna.gif', // Little Krishna
+            'https://media1.tenor.com/m/A0-1n9e-iLIAAAAC/ganesh-ganpati.gif', // Ganesha
+            'https://media1.tenor.com/m/191k6_5nC48AAAAC/krishna.gif' // Krishna Flute
+        ];
+
+        document.addEventListener('click', (e) => {
+            const img = document.createElement('img');
+            const randomGif = clickGifs[Math.floor(Math.random() * clickGifs.length)];
+            img.src = randomGif;
+            img.classList.add('click-anim');
+            img.style.left = e.pageX + 'px';
+            img.style.top = e.pageY + 'px';
+            document.body.appendChild(img);
+
+            // Remove after animation
+            setTimeout(() => {
+                img.remove();
+            }, 1500);
+        });
+    </script>
+</body>
+</html>

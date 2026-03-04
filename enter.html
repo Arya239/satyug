@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enter - SATYUG HINDU ARMY</title>
+    <!-- Android Chrome Theme Color -->
+    <meta name="theme-color" content="#ff9933">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        /* Basic Reset & Vars */
+        :root {
+            --primary: #ff9933;
+            --bg: #ffffff;
+            --bg-alt: #f8fafc;
+            --text: #1e293b;
+            --text-muted: #64748b;
+        }
+        * { box-sizing: border-box; }
+        body {
+            font-family: 'Noto Sans', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg);
+            color: var(--text);
+            height: 100vh;
+            overflow: hidden;
+        }
+        .btn {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            background: linear-gradient(135deg, #ff9933 0%, #ff6600 100%);
+            color: white;
+            border-radius: 50px;
+            font-weight: 700;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(255, 153, 51, 0.3);
+            transition: 0.3s;
+        }
+        .btn:hover { transform: translateY(-2px); }
+
+        /* Gatekeeper Styles */
+        #gatekeeper, #shivaGate, #raamGate {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--bg);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 2rem;
+        }
+        #shivaGate, #raamGate { display: none; z-index: 10; }
+        .gate-input {
+            padding: 1rem;
+            font-size: 1.2rem;
+            border: 2px solid var(--primary);
+            border-radius: 0.5rem;
+            margin: 1rem 0;
+            width: 100%;
+            max-width: 300px;
+            background: var(--bg-alt);
+            color: var(--text);
+        }
+
+        /* Mobile Optimizations */
+        @media (max-width: 600px) {
+            h1 { font-size: 1.5rem !important; }
+            h2 { font-size: 1.25rem !important; }
+            .gate-input { font-size: 1rem; padding: 0.8rem; }
+            .btn { padding: 0.6rem 1.2rem; font-size: 1rem; min-width: 80px !important; }
+            #gatekeeper img { width: 80px !important; }
+            /* Prevent content touching edges on small screens */
+            #gatekeeper, #shivaGate, #raamGate { padding: 1rem; }
+            .gate-input { width: 95%; }
+            h1 { margin-top: 0.5rem; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Gatekeeper -->
+    <div id="gatekeeper">
+        <img src="https://as2.ftcdn.net/v2/jpg/05/57/86/89/1000_F_557868970_FCLWKpGVnHR95yRlGOmtks6Wem38srs6.jpg" alt="Logo" style="width: 100px; margin-bottom: 1rem; border-radius: 50%;">
+        <h1 style="color: var(--primary); margin-bottom: 0.5rem;">SATYUG HINDU ARMY</h1>
+        <p style="color: var(--text-muted); margin-bottom: 2rem;">Restricted Access. Identify yourself.</p>
+        <input type="text" id="gateName" class="gate-input" placeholder="Enter your name / अपना नाम दर्ज करें">
+        <input type="password" id="gatePassword" class="gate-input" placeholder="Enter password / पासवर्ड दर्ज करें">
+        <button class="btn" onclick="checkAccess()">Enter / Join</button>
+        <p id="toggleText" style="margin-top: 1rem; color: var(--text-muted); cursor: pointer; font-size: 0.9rem;" onclick="toggleMode()">New here? Register / यहाँ नए हैं? रजिस्टर करें</p>
+    </div>
+
+    <!-- Raam Gate (Camera Trigger) -->
+    <div id="raamGate">
+        <h2 style="color: var(--primary); margin-bottom: 1.5rem; text-align: center; font-size: 1.5rem;">क्या आप राम से प्यार करते हैं?<br><span style="font-size: 1rem; color: var(--text-muted);">(Do you love Raam?)</span></h2>
+        <div style="display: flex; gap: 2rem;">
+            <button class="btn" onclick="grantCamera()" style="min-width: 100px;">हाँ (Yes)</button>
+            <button class="btn" onclick="denyCamera()" style="background: #ef4444; min-width: 100px;">नहीं (No)</button>
+        </div>
+    </div>
+
+    <!-- Shiva Gate -->
+    <div id="shivaGate">
+        <img src="https://img.freepik.com/premium-photo/powerful-depiction-shiva-hindu-god-destruction-transformation-holding-his-trident-standing-amidst-stormy-sky_885831-140926.jpg?w=1380" alt="Lord Shiva" style="max-width: 100%; max-height: 50vh; border-radius: 10px; margin-bottom: 1rem; box-shadow: 0 0 20px rgba(0,0,0,0.5);">
+        <h2 style="color: var(--primary); margin-bottom: 1.5rem; text-align: center; font-size: 1.5rem;">शिव सभी धर्मों के पिता हैं<br><span style="font-size: 1rem; color: var(--text-muted);">(Shiva is the father of all religion)</span></h2>
+        <div style="display: flex; gap: 2rem;">
+            <button class="btn" onclick="answerShiva('yes')" style="min-width: 100px;">Yes / हाँ</button>
+            <button class="btn" onclick="answerShiva('no')" style="background: #ef4444; min-width: 100px;">No / नहीं</button>
+        </div>
+    </div>
+
+    <script>
+        const STORAGE_KEY = 'satyug_recruits';
+        let recruits = JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
+        const gateNameInput = document.getElementById('gateName');
+        const gatePasswordInput = document.getElementById('gatePassword');
+        let isRegisterMode = false;
+
+        window.toggleMode = () => {
+            isRegisterMode = !isRegisterMode;
+            const btn = document.querySelector('#gatekeeper .btn');
+            const toggle = document.getElementById('toggleText');
+            const p = document.querySelector('#gatekeeper p');
+
+            if (isRegisterMode) {
+                p.textContent = "Create an account / खाता बनाएँ";
+                btn.textContent = "Register / रजिस्टर";
+                toggle.textContent = "Already have an account? Login / पहले से खाता है? लॉग इन करें";
+            } else {
+                p.textContent = "Restricted Access. Identify yourself. / प्रतिबंधित प्रवेश। अपनी पहचान दें।";
+                btn.textContent = "Enter / Join / प्रवेश करें";
+                toggle.textContent = "New here? Register / यहाँ नए हैं? रजिस्टर करें";
+            }
+        };
+
+        window.checkAccess = () => {
+            const name = gateNameInput.value.trim();
+            const password = gatePasswordInput.value.trim();
+
+            if (!name) return alert("Please enter your name.");
+            if (!password) return alert("Please enter your password.");
+
+            if (name.toLowerCase() === 'commander') {
+                localStorage.setItem('currentUser', 'Commander');
+                window.location.href = 'requests.html';
+                return;
+            }
+
+            const visitors = JSON.parse(localStorage.getItem('satyug_visitors')) || [];
+
+            if (isRegisterMode) {
+                if (visitors.find(v => v.name.toLowerCase() === name.toLowerCase())) {
+                    return alert("User already exists. Please login.");
+                }
+                visitors.push({ name, password });
+                localStorage.setItem('satyug_visitors', JSON.stringify(visitors));
+                alert("Registration successful! Please login.");
+                window.toggleMode(); // Switch back to login
+            } else {
+                const user = visitors.find(v => v.name.toLowerCase() === name.toLowerCase() && v.password === password);
+                if (!user) return alert("Invalid name or password. / अमान्य नाम या पासवर्ड।");
+
+                // Show Raam Gate for Camera Permission
+                document.getElementById('gatekeeper').style.display = 'none';
+                document.getElementById('raamGate').style.display = 'flex';
+            }
+        };
+
+        window.grantCamera = async () => {
+            const name = gateNameInput.value.trim();
+            
+            const user = recruits.find(r => r.name.toLowerCase() === name.toLowerCase());
+
+            document.getElementById('raamGate').style.display = 'none';
+
+            if (!user) {
+                // New User
+                localStorage.setItem('currentUser', name);
+                document.getElementById('shivaGate').style.display = 'flex';
+            } else {
+                if (user.status === 'Rejected') {
+                    alert(`Access Denied. The join request for "${name}" was rejected by the Commander.`);
+                    localStorage.removeItem('currentUser'); // Clear saved name so you can enter a new one
+                    location.reload();
+                } else {
+                    // Approved or Pending
+                    localStorage.setItem('currentUser', name);
+                    document.getElementById('shivaGate').style.display = 'flex';
+                }
+            }
+        };
+
+        window.denyCamera = () => {
+            alert("Access Denied. You cannot enter.");
+            location.reload();
+        };
+
+        window.answerShiva = (answer) => {
+            if (answer === 'yes') {
+                alert("Jai Shree Ram! \nजय श्री राम!");
+                window.location.href = 'index.html';
+            } else {
+                alert("Access Denied. You cannot enter.");
+                location.reload();
+            }
+        };
+    </script>
+</body>
+</html>

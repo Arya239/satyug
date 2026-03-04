@@ -1,0 +1,921 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Official website of Satyug Hindu Army - Protecting Dharma and Culture.">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="SATYUG HINDU ARMY">
+    <meta property="og:description" content="Join the movement for Dharma. Blogs and updates in Hindi and English.">
+
+    <title>SATYUG HINDU ARMY</title>
+
+    <!-- Android Chrome Theme Color -->
+    <meta name="theme-color" content="#ff9933">
+
+    <!-- Google Fonts: Noto Sans (Supports Latin & Devanagari) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;700&family=Noto+Sans+Devanagari:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* --- CSS Variables & Dark Mode Support --- */
+        :root {
+            --primary: #ff9933; /* Saffron */
+            --primary-hover: #e67e00;
+            --bg: #ffffff;
+            --bg-alt: #f8fafc;
+            --text: #1e293b;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --max-width: 1200px;
+            --transition: all 0.3s ease;
+            --gradient-primary: linear-gradient(135deg, #ff9933 0%, #ff6600 100%);
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg: #0f172a;
+                --bg-alt: #1e293b;
+                --text: #f1f5f9;
+                --text-muted: #94a3b8;
+                --border: #334155;
+                --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.5);
+            }
+        }
+
+        /* --- Base Styles --- */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans', 'Noto Sans Devanagari', sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            background-color: var(--bg);
+            transition: background-color 0.3s, color 0.3s;
+            overflow-x: hidden;
+        }
+
+        a { text-decoration: none; color: inherit; }
+        ul { list-style: none; }
+        img { max-width: 100%; display: block; }
+
+        /* --- Utilities --- */
+        .container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            background: var(--gradient-primary);
+            color: white;
+            border-radius: 50px;
+            font-weight: 700;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(255, 153, 51, 0.3);
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(255, 153, 51, 0.4);
+            filter: brightness(1.1);
+        }
+
+        /* --- Header --- */
+        header {
+            background-color: var(--bg);
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        header.scrolled {
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom-color: transparent;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 4.5rem;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            letter-spacing: -0.025em;
+        }
+
+        /* Language Selector */
+        .lang-select {
+            padding: 0.5rem;
+            border-radius: 0.25rem;
+            border: 1px solid var(--border);
+            background: var(--bg);
+            color: var(--text);
+            font-family: inherit;
+            cursor: pointer;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            font-weight: 500;
+            color: var(--text-muted);
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover { color: var(--primary); }
+
+        .hamburger {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            position: relative;
+            overflow: hidden;
+            padding: 8rem 0;
+            text-align: center;
+            color: white;
+            clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
+        }
+
+        .hero-slider {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+        }
+
+        .hero-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            opacity: 0;
+            transition: opacity 1.2s ease-in-out;
+        }
+
+        .hero-slide.active {
+            opacity: 1;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at top right, rgba(255, 179, 102, 0.5) 0%, transparent 50%), linear-gradient(135deg, rgba(255, 153, 51, 0.7) 0%, rgba(255, 102, 0, 0.8) 100%);
+            z-index: -1;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+            letter-spacing: -0.025em;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 2.5rem;
+            max-width: 600px;
+            margin-inline: auto;
+        }
+
+        .hero .btn {
+            background: white;
+            color: #ff6600;
+        }
+
+        .hero .container {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* --- Features Grid --- */
+        .features { padding: 6rem 0; }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-header h2 { font-size: 2.25rem; margin-bottom: 0.5rem; }
+        .section-header p { color: var(--text-muted); }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .features-grid a {
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+
+        .feature-card {
+            padding: 2rem;
+            border-radius: 1rem;
+            background: var(--bg);
+            border: none;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: var(--gradient-primary);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+
+        .feature-icon { 
+            font-size: 2rem; 
+            margin-bottom: 1rem;
+            display: inline-block;
+            padding: 12px;
+            background: #fff0e6;
+            border-radius: 50%;
+            line-height: 1;
+        }
+
+        .feature-card:hover .feature-icon {
+            transform: rotateY(360deg);
+            transition: transform 0.6s ease;
+        }
+
+        /* --- Footer --- */
+        footer {
+            background-color: #1e293b;
+            color: white;
+            padding: 3rem 0;
+            text-align: center;
+            margin-top: 4rem;
+        }
+        
+        footer p {
+            opacity: 0.8;
+            font-size: 0.9rem;
+        }
+
+        /* --- Scroll Animation Classes --- */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* --- Mobile --- */
+        @media (max-width: 768px) {
+            .nav-links {
+                position: absolute;
+                top: 4.5rem;
+                left: 0;
+                width: 100%;
+                background-color: var(--bg);
+                border-bottom: 1px solid var(--border);
+                flex-direction: column;
+                padding: 2rem;
+                transform: translateY(-150%);
+                transition: transform 0.3s ease-in-out;
+                z-index: 999;
+                gap: 1.5rem; /* Better spacing for mobile */
+                overflow-y: auto; /* Scroll if menu is too long */
+                max-height: 85vh;
+            }
+            .nav-links.open { transform: translateY(0); }
+            .nav-links a {
+                display: block;
+                padding: 0.5rem 0; /* Larger touch target */
+                font-size: 1.1rem;
+            }
+            .hamburger { display: block; }
+            
+            /* Mobile Adjustments */
+            .hero { padding: 6rem 0 4rem 0; clip-path: polygon(0 0, 100% 0, 100% 95%, 0 100%); }
+            /* Use dvh (Dynamic Viewport Height) for better mobile browser support */
+            .chat-container { height: 60vh; height: 60dvh; }
+            .section-header h2 { font-size: 1.75rem; }
+            .feature-card { padding: 1.5rem; }
+        }
+
+        /* --- Back to Top Button --- */
+        #backToTop {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: var(--primary);
+            color: white;
+            width: 3rem;
+            height: 3rem;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            cursor: pointer;
+            opacity: 0;
+            pointer-events: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            z-index: 900;
+            border: none;
+        }
+        #backToTop.visible {
+            opacity: 1;
+            pointer-events: all;
+        }
+        #backToTop:hover {
+            transform: translateY(-5px);
+            background: var(--primary-hover);
+        }
+
+        /* --- Search Bar --- */
+        .search-box {
+            display: flex;
+            align-items: center;
+            background: var(--bg);
+            border-radius: 50px;
+            padding: 5px;
+            border: 1px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .search-box.active {
+            border-color: var(--primary);
+            box-shadow: 0 0 10px rgba(0,0,0,0.05);
+        }
+
+        .search-txt {
+            border: none;
+            background: none;
+            outline: none;
+            padding: 0;
+            color: var(--text);
+            font-size: 1rem;
+            transition: width 0.4s ease, opacity 0.4s ease;
+            width: 0;
+            opacity: 0;
+        }
+
+        .search-box.active .search-txt {
+            width: 150px;
+            opacity: 1;
+            padding: 0 10px;
+        }
+
+        .search-btn {
+            color: var(--primary);
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background: transparent;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: 0.4s;
+            border: none;
+            cursor: pointer;
+            font-size: 1.2rem;
+        }
+
+        /* --- Click GIF Effect --- */
+        .click-anim {
+            position: absolute;
+            width: 120px;
+            user-select: none;
+            pointer-events: none;
+            z-index: 9999;
+            filter: drop-shadow(0 4px 6px rgba(0,0,0,0.3));
+            animation: dancePop 1.5s ease-out forwards;
+        }
+
+        @keyframes dancePop {
+            0% { opacity: 0; transform: translate(-50%, -50%) scale(0.5); }
+            20% { opacity: 1; transform: translate(-50%, -50%) scale(1.1) rotate(-10deg); }
+            50% { transform: translate(-50%, -50%) scale(1.1) rotate(10deg); }
+            100% { opacity: 0; transform: translate(-50%, -150%) scale(0.5); }
+        }
+
+        /* --- Chat Section --- */
+        .chat-section { padding: 4rem 0; background: var(--bg-alt); border-top: 1px solid var(--border); }
+        .chat-container { max-width: 800px; margin: 0 auto; background: var(--bg); border-radius: 1rem; box-shadow: var(--shadow); overflow: hidden; display: flex; flex-direction: column; height: 500px; }
+        .chat-header { padding: 1rem; background: var(--primary); color: white; display: flex; justify-content: space-between; align-items: center; }
+        .chat-messages { flex: 1; padding: 1rem; overflow-y: auto; display: flex; flex-direction: column; gap: 0.5rem; }
+        .message { max-width: 80%; padding: 0.5rem 1rem; border-radius: 1rem; font-size: 0.9rem; position: relative; word-wrap: break-word; }
+        .message.self { align-self: flex-end; background: var(--primary); color: white; border-bottom-right-radius: 0; }
+        .message.other { align-self: flex-start; background: var(--bg-alt); border: 1px solid var(--border); border-bottom-left-radius: 0; color: var(--text); }
+        .message-sender { font-size: 0.75rem; font-weight: bold; margin-bottom: 0.2rem; display: block; opacity: 0.8; }
+        .chat-input-area { padding: 1rem; border-top: 1px solid var(--border); display: flex; gap: 0.5rem; background: var(--bg); }
+        .chat-input-area input { flex: 1; padding: 0.5rem 1rem; border: 1px solid var(--border); border-radius: 2rem; outline: none; background: var(--bg-alt); color: var(--text); }
+        .chat-input-area button { padding: 0.5rem 1.5rem; border-radius: 2rem; }
+
+        /* Input style for Join Overlay */
+        .gate-input {
+            padding: 1rem;
+            font-size: 1.2rem;
+            border: 2px solid var(--primary);
+            border-radius: 0.5rem;
+            margin: 1rem 0;
+            width: 100%;
+            max-width: 300px;
+            background: var(--bg-alt);
+            color: var(--text);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Join Form Overlay -->
+    <div id="joinOverlay" style="display:none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 10002; flex-direction: column; justify-content: center; align-items: center; padding: 2rem;">
+        <div style="background: var(--bg); padding: 2rem; border-radius: 1rem; max-width: 400px; width: 90%; text-align: center; position: relative; box-shadow: 0 4px 20px rgba(0,0,0,0.5); max-height: 90vh; overflow-y: auto;">
+            <button onclick="closeJoinForm()" style="position: absolute; top: 10px; right: 15px; background: none; border: none; font-size: 2rem; cursor: pointer; color: var(--text); line-height: 1;">&times;</button>
+            <h2 style="color: var(--primary); margin-bottom: 1rem;">Join Satyug Hindu Army</h2>
+            <p style="color: var(--text-muted); margin-bottom: 1.5rem;">Enter your details to send a request to the Commander.</p>
+            <input type="text" id="joinName" class="gate-input" placeholder="Enter your Name" style="display:block; margin: 0 auto 1rem auto;">
+            <input type="tel" id="joinPhone" class="gate-input" placeholder="Enter Phone Number" style="display:block; margin: 0 auto 1.5rem auto;">
+            <button class="btn" onclick="submitJoinRequest()">Send Request</button>
+        </div>
+    </div>
+
+    <header>
+        <div class="container">
+            <nav aria-label="Main navigation">
+                <div style="display: flex; align-items: center;">
+                    <a href="requests.html" aria-label="Admin Access" title="Commander Access">
+                        <img src="https://as2.ftcdn.net/v2/jpg/05/57/86/89/1000_F_557868970_FCLWKpGVnHR95yRlGOmtks6Wem38srs6.jpg" alt="Logo" style="height: 50px; width: auto; display: inline-block; vertical-align: middle; margin-right: 10px; cursor: pointer;">
+                    </a>
+                    <a href="#" class="logo">SATYUG HINDU ARMY</a>
+                </div>
+                <button class="hamburger" id="menuToggle" aria-label="Toggle navigation" aria-expanded="false">
+                    &#9776;
+                </button>
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="#home" data-i18n="home">Home</a></li>
+                    <li><a href="#blogs" data-i18n="blogs">Blogs</a></li>
+                    <li><a href="gallery.html" data-i18n="gallery">Gallery</a></li>
+                    <li><a href="#about" data-i18n="about">About</a></li>
+                    <li><a href="#contact" data-i18n="contact">Contact</a></li>
+                    <li>
+                        <select class="lang-select" id="languageSelector">
+                            <option value="en">English</option>
+                            <option value="hi">हिंदी</option>
+                        </select>
+                    </li>
+                    <li>
+                        <div class="search-box">
+                            <input type="text" class="search-txt" placeholder="Search...">
+                            <button class="search-btn" aria-label="Search">&#128269;</button>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero reveal" id="home">
+            <div class="hero-slider">
+                <!-- Slides are added via JavaScript -->
+            </div>
+            <div class="hero-overlay"></div>
+            <div class="container">
+                <h1 data-i18n="hero_title">Protecting Dharma.<br>Building the Future.</h1>
+                <p data-i18n="hero_desc">Join the Satyug Hindu Army to preserve our culture, spread knowledge, and unite the community.</p>
+                <button class="btn" id="ctaBtn" data-i18n="join_btn">Join the Army</button>
+                <img src="https://cdnb.artstation.com/p/assets/images/images/038/203/989/large/subhrajit-ojha-bhim-0.jpg?1622473461" alt="Warrior Bhim" style="margin-top: 2rem; border-radius: 1rem; max-width: 400px; height: auto; box-shadow: 0 4px 15px rgba(0,0,0,0.3); margin-left: auto; margin-right: auto;">
+            </div>
+        </section>
+
+        <section class="features" id="blogs">
+            <div class="container">
+                <div class="section-header reveal">
+                    <h2 data-i18n="blog_title">Latest Blogs</h2>
+                    <p data-i18n="blog_subtitle">Read our thoughts on spirituality, history, and culture.</p>
+                </div>
+                <div class="features-grid">
+                    <a href="vedas.html" aria-label="Read more about The Power of Vedas">
+                        <div class="feature-card reveal">
+                            <div class="feature-icon">🕉️</div>
+                            <h3 data-i18n="blog1_title">The Power of Vedas</h3>
+                            <p class="text-muted" data-i18n="blog1_desc">Exploring the ancient science and wisdom hidden in our scriptures.</p>
+                        </div>
+                    </a>
+                    <a href="warriors.html" aria-label="Read more about History of Warriors">
+                        <div class="feature-card reveal">
+                            <div class="feature-icon">🚩</div>
+                            <h3 data-i18n="blog2_title">History of Warriors</h3>
+                            <p class="text-muted" data-i18n="blog2_desc">Remembering the brave souls who fought for Dharma.</p>
+                        </div>
+                    </a>
+                    <a href="yoga.html" aria-label="Read more about Yoga & Meditation">
+                        <div class="feature-card reveal">
+                            <div class="feature-icon">🧘</div>
+                            <h3 data-i18n="blog3_title">Yoga & Meditation</h3>
+                            <p class="text-muted" data-i18n="blog3_desc">How spiritual practices can strengthen the modern youth.</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Chat Section (War Room) -->
+    <section class="chat-section" id="warRoom" style="display:none;">
+        <div class="container">
+            <div class="chat-container">
+                <div class="chat-header">
+                    <h2>War Room (Group Chat)</h2>
+                    <button onclick="clearChat()" id="clearChatBtn" style="background: #ef4444; border: none; padding: 5px 10px; color: white; border-radius: 5px; cursor: pointer; display: none; font-size: 0.8rem;">Clear Chat</button>
+                </div>
+                <div class="chat-messages" id="chatMessages">
+                    <!-- Messages go here -->
+                </div>
+                <div class="chat-input-area">
+                    <input type="text" id="chatInput" placeholder="Type a message..." onkeypress="if(event.key==='Enter') sendMessage()">
+                    <button class="btn" onclick="sendMessage()">Send</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 SATYUG HINDU ARMY. All rights reserved. | <a href="gallery.html" style="color: white; text-decoration: underline;">Members Gallery</a> | Dharma Rakshati Rakshitah</p>
+        </div>
+    </footer>
+
+    <button id="backToTop" aria-label="Back to Top">&uarr;</button>
+
+    <script>
+        // Translations
+        const translations = {
+            en: {
+                home: "Home",
+                blogs: "Blogs",
+                gallery: "Gallery",
+                about: "About",
+                contact: "Contact",
+                hero_title: "Protecting Dharma.<br>Building the Future.",
+                hero_desc: "Join the Satyug Hindu Army to preserve our culture, spread knowledge, and unite the community.",
+                join_btn: "Join the Army",
+                blog_title: "Latest Blogs",
+                blog_subtitle: "Read our thoughts on spirituality, history, and culture.",
+                blog1_title: "The Power of Vedas",
+                blog1_desc: "Exploring the ancient science and wisdom hidden in our scriptures.",
+                blog2_title: "History of Warriors",
+                blog2_desc: "Remembering the brave souls who fought for Dharma.",
+                blog3_title: "Yoga & Meditation",
+                blog3_desc: "How spiritual practices can strengthen the modern youth."
+            },
+            hi: {
+                home: "मुख्य पृष्ठ",
+                blogs: "ब्लॉग",
+                gallery: "गैलरी",
+                about: "परिचय",
+                contact: "संपर्क",
+                hero_title: "धर्म की रक्षा।<br>भविष्य का निर्माण।",
+                hero_desc: "हमारी संस्कृति को संरक्षित करने, ज्ञान का प्रसार करने और समुदाय को एकजुट करने के लिए सतयुग हिंदू सेना में शामिल हों।",
+                join_btn: "सेना में शामिल हों",
+                blog_title: "नवीनतम ब्लॉग",
+                blog_subtitle: "आध्यात्मिकता, इतिहास और संस्कृति पर हमारे विचार पढ़ें।",
+                blog1_title: "वेदों की शक्ति",
+                blog1_desc: "हमारे शास्त्रों में छिपे प्राचीन विज्ञान और ज्ञान की खोज।",
+                blog2_title: "योद्धाओं का इतिहास",
+                blog2_desc: "उन बहादुर आत्माओं को याद करना जिन्होंने धर्म के लिए लड़ाई लड़ी।",
+                blog3_title: "योग और ध्यान",
+                blog3_desc: "आध्यात्मिक अभ्यास आधुनिक युवाओं को कैसे मजबूत कर सकते हैं।"
+            }
+        };
+
+        // Language Switcher Logic
+        const langSelector = document.getElementById('languageSelector');
+        
+        langSelector.addEventListener('change', (e) => {
+            const lang = e.target.value;
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (translations[lang][key]) {
+                    el.innerHTML = translations[lang][key];
+                }
+            });
+        });
+
+        // Mobile Menu Logic
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.getElementById('navLinks');
+
+        menuToggle.addEventListener('click', () => {
+            const isOpen = navLinks.classList.toggle('open');
+            menuToggle.setAttribute('aria-expanded', isOpen);
+        });
+
+        // Close menu when clicking a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('open');
+                menuToggle.setAttribute('aria-expanded', 'false');
+            });
+        });
+
+        // Scroll Reveal Animation
+        const revealElements = document.querySelectorAll('.reveal');
+        
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        revealElements.forEach(el => revealObserver.observe(el));
+
+        // --- Recruitment Logic ---
+        const STORAGE_KEY = 'satyug_recruits';
+        let recruits = JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
+
+        // Check if user is logged in
+        const currentUser = localStorage.getItem('currentUser');
+        if (!currentUser) {
+            window.location.href = 'enter.html';
+        } else {
+            // Check if user is approved to show chat
+            const userRecord = recruits.find(r => r.name && r.name.toLowerCase() === currentUser.toLowerCase());
+            
+            if ((userRecord && userRecord.status === 'Approved') || currentUser === 'Commander') {
+                document.getElementById('warRoom').style.display = 'block';
+                loadChat();
+                if (currentUser === 'Commander') {
+                    document.getElementById('clearChatBtn').style.display = 'inline-block';
+                }
+            }
+        }
+
+        // Internal Join Button Logic
+        document.getElementById('ctaBtn').addEventListener('click', () => {
+            // Pre-fill name if known
+            const currentName = localStorage.getItem('currentUser');
+            if (currentName) {
+                document.getElementById('joinName').value = currentName;
+            }
+            
+            document.getElementById('joinOverlay').style.display = 'flex';
+        });
+
+        window.closeJoinForm = () => {
+            document.getElementById('joinOverlay').style.display = 'none';
+        }
+
+        window.submitJoinRequest = () => {
+             let requestCount = parseInt(localStorage.getItem('joinRequestCount') || '0');
+
+            const name = document.getElementById('joinName').value.trim();
+            const phone = document.getElementById('joinPhone').value.trim();
+
+            if (!name || !phone) {
+                alert("Please fill in both Name and Phone Number.");
+                return;
+            }
+
+            // Check if already exists
+            const user = recruits.find(r => r.name.toLowerCase() === name.toLowerCase());
+            if (user) {
+                alert(`You have already requested to join. Status: ${user.status}`);
+                closeJoinForm();
+                return;
+            }
+
+            recruits.push({ name: name, phone: phone, status: 'Pending' });
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(recruits));
+            
+            requestCount++;
+            localStorage.setItem('joinRequestCount', requestCount);
+
+            alert(`Request sent to Admin Panel! Request #${requestCount}. Please wait for approval.`);
+            closeJoinForm();
+        }
+
+        // Scroll Effects (Header & Back to Top)
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            const backToTop = document.getElementById('backToTop');
+            
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+
+            if (window.scrollY > 300) {
+                backToTop.classList.add('visible');
+            } else {
+                backToTop.classList.remove('visible');
+            }
+        });
+
+        document.getElementById('backToTop').addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // Hero Slider Logic
+        const sliderContainer = document.querySelector('.hero-slider');
+        // Using high-quality, relevant images
+        const slides = [
+            'https://images.unsplash.com/photo-1534437432097-c820413a197c?q=80&w=2070&auto=format&fit=crop', // Temple
+            'https://images.unsplash.com/photo-1621839239761-256c916f027a?q=80&w=2070&auto=format&fit=crop', // Sadhu
+            'https://images.unsplash.com/photo-1601625593345-2968ae1a7183?q=80&w=1932&auto=format&fit=crop'  // Havan/Ceremony
+        ];
+        let currentSlide = 0;
+
+        slides.forEach((src, index) => {
+            const slide = document.createElement('div');
+            slide.classList.add('hero-slide');
+            slide.style.backgroundImage = `url('${src}')`;
+            if (index === 0) slide.classList.add('active');
+            sliderContainer.appendChild(slide);
+        });
+
+        const slideElements = document.querySelectorAll('.hero-slide');
+
+        setInterval(() => {
+            slideElements[currentSlide].classList.remove('active');
+            currentSlide = (currentSlide + 1) % slides.length;
+            slideElements[currentSlide].classList.add('active');
+        }, 5000); // Change slide every 5 seconds
+
+        // Search Toggle Logic
+        const searchBtn = document.querySelector('.search-btn');
+        const searchBox = document.querySelector('.search-box');
+        const searchInput = document.querySelector('.search-txt');
+
+        searchBtn.addEventListener('click', () => {
+            if (searchBox.classList.contains('active') && searchInput.value.trim() !== "") {
+                alert('Searching for: ' + searchInput.value);
+            } else {
+                searchBox.classList.toggle('active');
+                if (searchBox.classList.contains('active')) searchInput.focus();
+            }
+        });
+
+        // Random GIF Click Effect
+        const clickGifs = [
+            'https://img.pikbest.com/origin/09/25/00/39rpIkbEsTmFJ.png!w700wp'
+        ];
+
+        document.addEventListener('click', (e) => {
+            const img = document.createElement('img');
+            const randomGif = clickGifs[Math.floor(Math.random() * clickGifs.length)];
+            img.src = randomGif;
+            img.classList.add('click-anim');
+            img.style.left = e.pageX + 'px';
+            img.style.top = e.pageY + 'px';
+            document.body.appendChild(img);
+
+            // Remove after animation
+            setTimeout(() => {
+                img.remove();
+            }, 1500);
+        });
+
+        // --- Chat Logic ---
+        const CHAT_STORAGE_KEY = 'satyug_chat_messages';
+        const chatMessagesEl = document.getElementById('chatMessages');
+        const chatInput = document.getElementById('chatInput');
+        let lastMessageCount = 0;
+
+        function sendMessage() {
+            const text = chatInput.value.trim();
+            if (!text) return;
+            
+            const sender = localStorage.getItem('currentUser') || 'Anonymous';
+            const messages = JSON.parse(localStorage.getItem(CHAT_STORAGE_KEY)) || [];
+            
+            messages.push({
+                sender: sender,
+                text: text,
+                timestamp: new Date().getTime()
+            });
+            
+            localStorage.setItem(CHAT_STORAGE_KEY, JSON.stringify(messages));
+            chatInput.value = '';
+            renderChatMessages();
+            
+            // Scroll to bottom
+            chatMessagesEl.scrollTop = chatMessagesEl.scrollHeight;
+        }
+
+        function renderChatMessages() {
+            const messages = JSON.parse(localStorage.getItem(CHAT_STORAGE_KEY)) || [];
+            const currentUser = localStorage.getItem('currentUser');
+            
+            // Handle cleared chat or data reset
+            if (messages.length < lastMessageCount) {
+                chatMessagesEl.innerHTML = '';
+                lastMessageCount = 0;
+            }
+
+            // Optimization: Only re-render if message count changes
+            if (messages.length === lastMessageCount) return;
+
+            // Check if user is near bottom to auto-scroll later
+            // On first load (lastMessageCount === 0), we assume we want to scroll to bottom
+            const isNearBottom = lastMessageCount === 0 || (chatMessagesEl.scrollHeight - chatMessagesEl.scrollTop - chatMessagesEl.clientHeight < 100);
+
+            // Append only new messages
+            for (let i = lastMessageCount; i < messages.length; i++) {
+                const msg = messages[i];
+                const div = document.createElement('div');
+                const isSelf = msg.sender === currentUser;
+                div.className = `message ${isSelf ? 'self' : 'other'}`;
+                
+                // Secure text insertion (prevents XSS)
+                const senderSpan = document.createElement('span');
+                senderSpan.className = 'message-sender';
+                senderSpan.textContent = msg.sender;
+                
+                div.appendChild(senderSpan);
+                div.appendChild(document.createTextNode(msg.text));
+                
+                chatMessagesEl.appendChild(div);
+            }
+
+            lastMessageCount = messages.length;
+
+            if (isNearBottom) {
+                chatMessagesEl.scrollTop = chatMessagesEl.scrollHeight;
+            }
+        }
+
+        function loadChat() {
+            renderChatMessages();
+            // Poll for new messages every 2 seconds (Simulates real-time)
+            setInterval(renderChatMessages, 2000);
+        }
+
+        window.clearChat = () => {
+            if(confirm("Clear all chat history?")) {
+                localStorage.removeItem(CHAT_STORAGE_KEY);
+                renderChatMessages();
+            }
+        }
+    </script>
+</body>
+</html>
